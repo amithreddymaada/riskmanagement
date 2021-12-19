@@ -4,7 +4,7 @@
 
 <div class="navbar">
 
-    <a href="#Editor">Rules</a>
+    <a href="{% url 'index'%}">Rules</a>
     <a class="current" href="customer">Customers</a>
     <!-- <a href="#students">Student</a>
     <a href="#upload">Upload</a> -->  
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
         {% for h in high%}
-        <tr>
+        <tr id="high">
             <td>{{h}}</td>
         </tr>
         {% endfor %}
@@ -34,7 +34,7 @@
     </thead>
     <tbody>
         {% for h in medium%}
-        <tr>
+        <tr id = "mid">
             <td>{{h}}</td>
         </tr>
         {% endfor %}
@@ -50,7 +50,7 @@
     </thead>
     <tbody>
         {% for h in low%}
-        <tr>
+        <tr id = "low">
             <td>{{h}}</td>
         </tr>
         {% endfor %}
