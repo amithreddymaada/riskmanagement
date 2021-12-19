@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
 import pandas as pd
+import os
+from django.conf import settings
+
 
 
 month = [1,2,3,4,5,6,7,8,9,10]
@@ -28,6 +31,7 @@ def index(request):
 def risk23(request):
     df = pd.read_csv('C:\\Users\\amith\\DjangoProjects\\riskmanagement\\myapp\\customer_transactions.csv')
     names = pd.read_csv('C:\\Users\\amith\\DjangoProjects\\riskmanagement\\myapp\\customer_account_info.csv')
+    
     df.columns = ['Key', 'Acckey', 'Amount', 'Type', 'Country', 'Date']
     persons = df.groupby('Acckey')
 
@@ -83,3 +87,6 @@ def risk23(request):
         return_low=[]
 
     return render(request, 'display.html', {'high':return_high, 'medium':return_medium, 'low':return_low})
+
+def rules(request):
+    return render(request, 'index.html')
