@@ -7,3 +7,7 @@ class CountriesInfo(models.Model):
     entity_key = models.CharField(max_length=2)
 
 
+class RiskTable(models.Model):
+    HighRisk = models.CharField(max_length=5000)
+    MiddleRisk = models.CharField(max_length=5000)
+    LowRisk = models.CharField(max_length=5000)
