@@ -26,10 +26,8 @@ def index(request):
     return render(request,'index.html')
 
 def risk23(request):
-    df = pd.read_csv('F:\webDevelopment\django-hackthon\riskmanagement\Customer-Rating-System-Datasets\customer_transactions.csv')
-    print(df)
-    names = pd.read_csv('F:\webDevelopment\django-hackthon\riskmanagement\Customer-Rating-System-Datasets\customer_account_info.csv')
-    print(names)
+    df = pd.read_csv('F:\\webDevelopment\\django-hackthon\\riskmanagement\\myapp\\customer_transactions.csv')
+    names = pd.read_csv('F:\\webDevelopment\\django-hackthon\\riskmanagement\\myapp\\customer_account_info.csv')
     df.columns = ['Key', 'Acckey', 'Amount', 'Type', 'Country', 'Date']
     persons = df.groupby('Acckey')
 
@@ -57,9 +55,31 @@ def risk23(request):
                 medium.add(group_name)
             else:
                 low.add(group_name)
+    names.columns = ['Acckey', 'Key', 'date']
+    try:
+        high = pd.DataFrame(high)
+        high.columns = ['Acckey']
+        
+        high_keys = pd.merge(high, names, on='Acckey', how='inner')
+        return_high = list(high_keys['Key'])
+    except:
+        return_high = []
+    try:
+        medium = pd.DataFrame(medium)
+        medium.columns = ['Acckey']
+        
+        medium_keys = pd.merge(medium, names, on='Acckey', how='inner')
+        return_medium = list(medium_keys['Key'])
+    except:
+        return_medium = []
 
-    high_act = []
-    for n in high:
-        names.loc
+    try:
+        low = pd.DataFrame(low)
+        low.columns = ['Acckey']
+        
+        low_keys = pd.merge(low, names, on='Acckey', how='inner')
+        return_low = list(low_keys['Key'])
+    except:
+        return_low=[]
 
-    return render(request, 'display.html', {'high':high, 'medium':medium, 'low':low})
+    return render(request, 'display.html', {'high':return_high, 'medium':return_medium, 'low':return_low})
