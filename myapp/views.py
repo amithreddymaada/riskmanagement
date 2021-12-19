@@ -26,8 +26,10 @@ def index(request):
     return render(request,'index.html')
 
 def risk23(request):
-    df = pd.read_csv('../Customer-Rating-System-Datasets/customer_transactions.csv')
-    names = pd.read_csv('../Customer-Rating-System-Datasets/customer_account_info.csv')
+    df = pd.read_csv('F:\webDevelopment\django-hackthon\riskmanagement\Customer-Rating-System-Datasets\customer_transactions.csv')
+    print(df)
+    names = pd.read_csv('F:\webDevelopment\django-hackthon\riskmanagement\Customer-Rating-System-Datasets\customer_account_info.csv')
+    print(names)
     df.columns = ['Key', 'Acckey', 'Amount', 'Type', 'Country', 'Date']
     persons = df.groupby('Acckey')
 
