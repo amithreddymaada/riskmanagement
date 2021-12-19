@@ -26,8 +26,8 @@ def index(request):
     return render(request,'index.html')
 
 def risk23(request):
-    df = pd.read_csv('C:\\Users\\amith\\DjangoProjects\\riskmanagement\\myapp\\customer_transactions.csv')
-    names = pd.read_csv('C:\\Users\\amith\\DjangoProjects\\riskmanagement\\myapp\\customer_account_info.csv')
+    df = pd.read_csv('F:\\webDevelopment\\django-hackthon\\riskmanagement\\myapp\\customer_transactions.csv')
+    names = pd.read_csv('F:\\webDevelopment\\django-hackthon\\riskmanagement\\myapp\\customer_account_info.csv')
     df.columns = ['Key', 'Acckey', 'Amount', 'Type', 'Country', 'Date']
     persons = df.groupby('Acckey')
 
